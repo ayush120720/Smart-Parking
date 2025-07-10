@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Failed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000, #00FFFF);
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e0ffff;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background-color: #111;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+        }
+
+        .error {
+            color: #ff4c4c;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #cccccc;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: #00FFFF;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        a.button:hover {
+            background: #00cccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="error">Invalid Username or Password</h2>
+    <p>Please check your credentials and try again.</p>
+    <a th:href="@{/Userlogin}" class="button">Back to Login</a>
+</div>
+</body>
+</html>

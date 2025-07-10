@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Register - Smart Parking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000, #00FFFF);
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e0ffff;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .register-container {
+            background: #111;
+            padding: 2.5rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .register-container:hover {
+            box-shadow: 0 0 35px rgba(0, 255, 255, 0.6);
+        }
+
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #00FFFF;
+        }
+
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #e0ffff;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #00cccc;
+            border-radius: 5px;
+            background: #1c1c1c;
+            color: #e0ffff;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00ffff;
+            background-color: #222;
+        }
+
+        .error {
+            color: #ff4c4c;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        button {
+            background-color: #00FFFF;
+            color: #000000;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #00cccc;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: #e0ffff;
+        }
+
+        .login-link a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 500px) {
+            .register-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="register-container">
+    <h2>Register</h2>
+    <form th:action="@{/register}" th:object="${userForm}" method="post">
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" type="text" th:field="*{username}" placeholder="Enter username" required />
+            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" th:field="*{password}" placeholder="Enter password" required />
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" th:field="*{email}" placeholder="you@example.com" required />
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" type="text" th:field="*{phone}" placeholder="+91-123456789" />
+            <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="error"></div>
+        </div>
+
+        <div th:if="${error}" class="error" th:text="${error}"></div>
+
+        <div class="form-actions">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+
+    <div class="login-link">
+        Already have an account? <a th:href="@{/Userlogin}">Login</a>
+    </div>
+</div>
+
+</body>
+</html>

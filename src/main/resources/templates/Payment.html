@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Parking – Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 40px;
+        }
+        .payment-form {
+            max-width: 400px;
+            margin: auto;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 12px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .error { color: red; font-size: 0.9em; }
+        .success { color: green; font-size: 1em; margin-bottom: 15px; }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+<div class="payment-form">
+    <h2>Complete Your Payment</h2>
+
+    <div th:if="${result}" th:classappend="${success} ? ' success' : ' error'">
+        <p th:text="${result}"></p>
+    </div>
+
+    <form th:action="@{/Payment/make}" th:object="${payment}" method="post">
+        <input type="hidden" th:field="*{userId}" />
+        <input type="hidden" th:field="*{reserveId}" />
+
+        <label>Amount (₹):</label>
+        <input type="number" th:field="*{amount}" readonly />
+        <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="error"></div>
+
+        <label>Payment Method:</label>
+        <select th:field="*{method}" id="method" onchange="togglePaymentFields()" required>
+            <option value="" disabled selected>Select Payment Method</option>
+            <option value="UPI">UPI</option>
+            <option value="CARD">Card</option>
+            <option value="CASH">Cash</option>
+        </select>
+        <div th:if="${#fields.hasErrors('method')}" th:errors="*{method}" class="error"></div>
+
+        <!-- UPI Transaction ID -->
+        <div id="upiField" style="display:none;">
+            <label>UPI Transaction ID:</label>
+            <input type="text" th:field="*{upiTransactionId}" placeholder="Your UPI Txn ID" />
+            <div th:if="${#fields.hasErrors('upiTransactionId')}" th:errors="*{upiTransactionId}" class="error"></div>
+        </div>
+
+        <!-- Card Number -->
+        <div id="cardField" style="display:none;">
+            <label>Card Number:</label>
+            <input type="text" name="cardNumber" id="cardNumber" maxlength="16" placeholder="Enter 16‑digit card no." />
+        </div>
+
+        <button type="submit">Pay</button>
+    </form>
+</div>
+
+<script>
+    function togglePaymentFields() {
+      const method = document.getElementById("method").value;
+      document.getElementById("upiField").style.display  = method === 'UPI'  ? 'block' : 'none';
+      document.getElementById("cardField").style.display = method === 'CARD'? 'block' : 'none';
+    }
+    document.addEventListener("DOMContentLoaded", togglePaymentFields);
+</script>
+</body>
+</html>

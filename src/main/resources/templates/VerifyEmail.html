@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Verification</title>
+</head>
+<body>
+<h2>Email Verification</h2>
+
+<form th:action="@{/verify-email-submit}" method="post">
+    <!-- Pass email as hidden field -->
+    <input type="hidden" th:name="email" th:value="${email}" />
+
+    <label for="token">Enter the 6-digit code sent to your email:</label><br>
+    <input type="text" id="token" name="token" required /><br><br>
+
+    <button type="submit">Verify</button>
+</form>
+
+<!-- Error message -->
+<p th:if="${error}" th:text="${error}" style="color:red;"></p>
+</body>
+</html>

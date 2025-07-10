@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Success</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #eafaf1;
+      text-align: center;
+    }
+    .box {
+      background: #fff;
+      padding: 40px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #fff;
+      background: #28a745;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+    a:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>Payment Successful!</h2>
+  <p>Your payment has been successfully processed.</p>
+  <a th:href="@{/Payment/receipt/{id}(id=${paymentId})}" target="_blank">Download Receipt (PDF)</a>
+</div>
+</body>
+</html>

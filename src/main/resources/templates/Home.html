@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Parking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+</head>
+<body class="bg-[#1a1a1a] text-white font-[Manrope] min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="flex justify-between items-center px-10 py-4 border-b border-[#333]">
+    <h1 class="text-xl font-bold">ParkSmart</h1>
+    <nav class="flex gap-8 text-sm">
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact</a>
+    </nav>
+    <button class="bg-white text-[#1a1a1a] px-5 py-2 rounded-full text-sm font-bold">Get Started</button>
+</header>
+
+<!-- Hero -->
+<section class="px-4 lg:px-20 py-10">
+    <div class="rounded-xl bg-cover bg-center h-[400px] flex flex-col justify-center items-center text-center"
+         style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAobwSsgIt2gPPU0SRN6lBtD1lSep0JCbtbNGEjLxdhKnqbyA_UPVTIQ9VzK8HBfCJoSLrOGI9M_Wx5mZwPmOEao--a5dOH_VKsVfP3BS2l6YeJChrV-kf8yKh2mb08MaaqRImHHaLHZ-_IilhTWQCLptAL4flKZoBBDhjSuFoYDrkhd4jRgZ7ZgiEYFFbo1Fnpc6K2w-pW6taULYf89O5GrcvUUhHeHZIyfh-idlSW27rhqxTmz9WKf5xp_edycsv2PzNHQhRwTRWu');">
+        <h2 class="text-4xl font-black">Smart Parking Solutions</h2>
+        <p class="text-sm mt-2">Find and reserve parking spots effortlessly with our innovative system.</p>
+        <a href="/reserve" class="mt-4 inline-block bg-white text-[#1a1a1a] px-6 py-2 rounded-full font-bold text-sm">
+            Explore Parking
+        </a>
+
+    </div>
+</section>
+
+<!-- Key Features -->
+<section class="px-4 lg:px-20 py-10 max-w-[1200px] mx-auto">
+    <h2 class="text-3xl font-bold mb-2">Key Features</h2>
+    <p class="mb-6 text-[#ccc]">Our smart parking system offers a range of features to enhance your parking experience.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="bg-[#2a2a2a] p-4 rounded-xl shadow">
+            <img class="rounded-lg mb-4 aspect-video w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3TR6kJPbSvGYFtH8mI1Jg9rGeIIycH9zktKtOFYolNcwBx6gS4m-5kuthe2P9yMaSMb3q28X0x0Dys-Xf-gr3bpuxZSMJsI8LDKhNFWgXKv01R9MyBMEEwWtY7Ru8Y_6dGTg2tGHadoHKeqImJHtrOa0NsdZnXyWW9aiMui9WpELwHsxxnbOsXG1RsLfzrM0PZDz8zZpqyzyRcl4KAXrYziqja7q_ViVrw9XsrpAI8xkz8N2Vi5FDVXAw0h_J1HZsgc4In7VSINNL" alt="Real-time Availability">
+            <h3 class="text-lg font-semibold mb-1">Real-time Availability</h3>
+            <p class="text-sm text-[#aaa]">Check parking availability in real-time with our intuitive map interface.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="bg-[#2a2a2a] p-4 rounded-xl shadow">
+            <img class="rounded-lg mb-4 aspect-video w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVHgydyuGq7NONMpqiPH7njNDoFZJTWJceGrEJ2SVDcuXqXDgvCKvdm6xow5pCdQ5FhhqpvqwelfDcG5ArjkJqBB4sZP0ki9lMXsZFj_Hzi2_3iRUyRGeXoDMFb0arBG-2rE2jYPny-tn3AcWcNpaHAZxYrNYF3OtQfn5W10kTHvWy8v3q_aFlJ5BVdPGnTOja0-sVdeyYZLkcPaTPbawYPhxD4gNrGNFr6usY0KsjwKzMgzJBoaEcBRN0itI05ybkGUUp6j_ek_LB" alt="Easy Reservations">
+            <h3 class="text-lg font-semibold mb-1">Easy Reservations</h3>
+            <p class="text-sm text-[#aaa]">Reserve your parking spot in advance with just a few clicks.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="bg-[#2a2a2a] p-4 rounded-xl shadow">
+            <img class="rounded-lg mb-4 aspect-video w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd94aGpop8PBtqCk11sFE5ogjfYdEVHwli_NTqYnDU7vYfm_zPBe1YXhb9fivHZFE78EbJKGEs5siwWzZU6lwRrD3wOXSQvRjZ2JTSvyoaFY-AVYvXt94LFfQgt_lBpB1E-2JRILQSSR9xNwrCPn5t61rbhREkBkd5pLD0s0TGo_XlTiNkIG9O9bEFBfmPy4Ad1grs06dsBG2schCMbXHDAWSM0mCov65fy3TFKqk7nO_n2bOMHIzQDwHnWDjqzAEGwjz-OfAy4gFX" alt="Automated Payments">
+            <h3 class="text-lg font-semibold mb-1">Automated Payments</h3>
+            <p class="text-sm text-[#aaa]">Enjoy hassle-free automated payments for a seamless experience.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Parking Locations -->
+<section class="px-4 lg:px-20 py-10 max-w-[1200px] mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Parking Locations</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="text-center">
+            <img src="/images/Ahmedabad.png" alt="Ahmedabad" class="rounded-xl w-full aspect-square object-cover mb-2">
+            <h4 class="font-semibold">Ahmedabad</h4>
+            <p class="text-sm text-[#aaa]">Find parking in Ahmedabad</p>
+        </div>
+        <div class="text-center">
+            <img src="/images/Surat.png" alt="Surat" class="rounded-xl w-full aspect-square object-cover mb-2">
+            <h4 class="font-semibold">Surat</h4>
+            <p class="text-sm text-[#aaa]">Find parking in Surat</p>
+        </div>
+        <div class="text-center">
+            <img src="/images/Vadodara.png" alt="Vadodara" class="rounded-xl w-full aspect-square object-cover mb-2">
+            <h4 class="font-semibold">Vadodara</h4>
+            <p class="text-sm text-[#aaa]">Find parking in Vadodara</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-10 text-[#999] text-sm border-t border-[#333] mt-auto">
+    <div class="flex justify-center flex-wrap gap-6 mb-4">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <p>&copy; 2025 Smart_Parking. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

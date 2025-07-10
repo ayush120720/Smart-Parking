@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Slot - Smart Parking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap"
+          rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Manrope', sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+
+        .slot-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 20px;
+            max-width: 1300px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        .slot {
+            border-radius: 12px;
+            padding: 1.8rem 1rem;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Available slots are green */
+        .slot.available {
+            background-color: #2e7d32;
+        }
+
+        /* Booked slots are gray and unclickable */
+        .slot.booked {
+            background-color: #444;
+            opacity: 0.6;
+            pointer-events: none;
+            box-shadow: none;
+        }
+
+        .slot:hover.available {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+        }
+
+        .slot p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .slot button {
+            background-color: white;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .slot button:hover {
+            background-color: #00ffff;
+            color: #000;
+        }
+
+        @media (max-width: 1024px) {
+            .slot-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slot-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<h2>Select Your Parking Slot</h2>
+
+<div class="slot-grid">
+    <div th:each="slot : ${availableSlots}"
+         th:classappend="${slot.available} ? 'available' : 'booked'"
+         class="slot">
+
+        <p th:text="${slot.slotLabel}">Slot</p>
+
+        <form th:if="${slot.available}" th:action="@{/reserve/finalize}" method="post">
+            <input type="hidden" name="slotId" th:value="${slot.slotId}" />
+            <input type="hidden" name="vehicleNumber" th:value="${vehicleNumber}" />
+            <input type="hidden" name="date" th:value="${date}" />
+            <input type="hidden" name="startTime" th:value="${startTime}" />
+            <input type="hidden" name="durationHours" th:value="${durationHours}" />
+            <button type="submit">Book</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+

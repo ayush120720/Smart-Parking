@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Smart Parking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000, #00FFFF); /* black to cyan */
+            color: #e0ffff; /* light cyan text */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .login-container {
+            background: #111;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #00FFFF; /* cyan heading */
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #e0ffff;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #00cccc;
+            background: #1c1c1c;
+            color: #e0ffff;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00ffff;
+        }
+
+        .error-message {
+            color: #ff4c4c;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        button {
+            background-color: #00FFFF;
+            color: #000000;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #00cccc;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: #e0ffff;
+        }
+
+        .register-link a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form th:action="@{/Userlogin}" method="post">
+        <div class="form-group">
+            <label for="username">Email</label>
+            <input type="email" id="username" name="username" required />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+        </div>
+
+        <div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+        <div class="form-actions">
+            <button type="submit">Login</button>
+        </div>
+    </form>
+
+    <div class="register-link">
+        Don't have an account? <a th:href="@{/register}">Register</a>
+    </div>
+</div>
+
+</body>
+</html>
